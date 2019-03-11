@@ -1,0 +1,2 @@
+jQuery(document).ready(function($){$("#js-contact-form").submit(function(e){e.preventDefault();$.ajax({url:$(this).attr('action'),type:'POST',data:$(this).serializeArray(),dataType:'json',success:function(res){grecaptcha.reset();if(res.status){$("#js-contact-form")[0].reset();}
+$(".js-form-message").text('').hide();$.each(res.message,function($k,$v){$("#"+$k+"-message").text($v).show();});}});});});
